@@ -43,12 +43,9 @@ export default function Login() {
         className="w-full max-w-md relative z-10"
       >
         {/* Logo */}
-        <div className="text-center mb-8">
-          <Link to="/" className="inline-flex items-center gap-2.5 justify-center mb-6">
-            <Logo size={40} />
-            <span className="font-display font-bold text-lg">
-              <span style={{ color: 'var(--primary)' }}>AP</span> Developments
-            </span>
+        <div className="text-center mb-10">
+          <Link to="/" className="inline-flex justify-center mb-6">
+            <Logo />
           </Link>
           <h1 className="font-display text-3xl font-bold mb-2">Welcome back</h1>
           <p className="text-[var(--muted)] text-sm">Sign in to your dashboard</p>
@@ -63,15 +60,15 @@ export default function Login() {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} noValidate className="space-y-5">
-            <div>
-              <label htmlFor="login-email" className="block text-sm font-medium text-[var(--muted)] mb-2">Email</label>
+          <form onSubmit={handleSubmit} noValidate className="space-y-8">
+            <div className="flex flex-col gap-2">
+              <label htmlFor="login-email" className="text-sm font-medium text-[var(--muted)]">Email</label>
               <input id="login-email" type="email" placeholder="you@example.com" className={INPUT_CLS}
                 value={form.email} onChange={e => setForm({...form,email:e.target.value})} autoComplete="email" />
             </div>
 
-            <div>
-              <label htmlFor="login-password" className="block text-sm font-medium text-[var(--muted)] mb-2">Password</label>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="login-password" className="text-sm font-medium text-[var(--muted)]">Password</label>
               <div className="relative">
                 <input id="login-password" type={showPw ? 'text' : 'password'} placeholder="••••••••" className={`${INPUT_CLS} pr-12`}
                   value={form.password} onChange={e => setForm({...form,password:e.target.value})} autoComplete="current-password" />
@@ -83,7 +80,7 @@ export default function Login() {
               </div>
             </div>
 
-            <Button type="submit" size="lg" loading={loading} className="w-full justify-center">
+            <Button type="submit" size="lg" loading={loading} className="w-full justify-center mt-4">
               Sign In
             </Button>
           </form>

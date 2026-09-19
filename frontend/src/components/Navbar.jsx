@@ -58,7 +58,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop links */}
-          <ul className="hidden lg:flex items-center gap-1" role="list">
+          <ul className="hidden lg:flex items-center gap-6" role="list">
             {NAV_LINKS.map(({ to, label }) => (
               <li key={to}>
                 <NavLink

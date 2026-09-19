@@ -57,15 +57,12 @@ export default function Register() {
         animate={{ opacity: 1, y: 0 }}
         className="w-full max-w-md relative z-10"
       >
-        <div className="text-center mb-8">
-          <Link to="/" className="inline-flex items-center gap-2.5 justify-center mb-6">
+        <div className="text-center mb-10">
+          <Link to="/" className="inline-flex justify-center mb-6">
             <Logo size={40} />
-            <span className="font-display font-bold text-lg">
-              <span style={{ color: 'var(--primary)' }}>AP</span> Developments
-            </span>
           </Link>
-          <h1 className="font-display text-3xl font-bold mb-2">Create your account</h1>
-          <p className="text-[var(--muted)] text-sm">Start planning your project today</p>
+          <h1 className="font-display text-3xl font-bold mb-2">Create an account</h1>
+          <p className="text-[var(--muted)] text-sm">Join AP Developments today</p>
         </div>
 
         <div className="rounded-3xl p-8 border border-[var(--border)]" style={{ background: 'var(--card-bg)' }}>
@@ -76,7 +73,7 @@ export default function Register() {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} noValidate className="space-y-5">
+          <form onSubmit={handleSubmit} noValidate className="space-y-8">
             <div>
               <label htmlFor="reg-name" className="block text-sm font-medium text-[var(--muted)] mb-2">Full Name <span style={{ color:'var(--accent)' }}>*</span></label>
               <input id="reg-name" type="text" placeholder="Your full name" className={INPUT_CLS}
