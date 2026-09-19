@@ -49,5 +49,9 @@ app.get('/api/health', (_req, res) => res.json({ status: 'ok', time: new Date() 
 // ── Error handler ────────────────────────────────────────
 app.use(errorMiddleware)
 
-// ── Start server ─────────────────────────────────────────
-app.listen(PORT, () => console.log(`🚀 AP Developments API running on port ${PORT}`))
+// ── Start server (Local only) ────────────────────────
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => console.log(`🚀 AP Developments API running on port ${PORT}`))
+}
+
+module.exports = app;
