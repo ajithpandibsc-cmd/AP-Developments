@@ -40,8 +40,9 @@ export default function Navbar() {
       <header
         ref={navRef}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? 'glass shadow-lg shadow-black/30 py-3' : 'bg-transparent py-5'
+          scrolled ? 'shadow-lg shadow-black/50 py-3 border-b border-[var(--primary)]/20' : 'bg-transparent py-5'
         }`}
+        style={scrolled ? { background: 'rgba(10, 10, 12, 0.85)', backdropFilter: 'blur(16px)' } : {}}
       >
         <nav className="container flex items-center justify-between">
           {/* Brand */}

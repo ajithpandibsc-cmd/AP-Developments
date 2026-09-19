@@ -57,20 +57,16 @@ export default function About() {
               </p>
             </motion.div>
 
-            {/* Right: logo visual */}
+            {/* Right: Studio Image */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, delay: 0.2 }}
               className="flex justify-center"
             >
-              <div className="relative">
-                <div className="w-64 h-64 rounded-3xl flex items-center justify-center border border-[rgba(124,58,237,0.3)] float-anim"
-                  style={{ background: 'linear-gradient(135deg,rgba(124,58,237,0.1),rgba(6,182,212,0.05))', backdropFilter:'blur(20px)' }}>
-                  <Logo size={120} />
-                </div>
-                <div className="absolute -inset-8 rounded-full opacity-20"
-                  style={{ background: 'radial-gradient(circle,var(--primary),transparent 70%)' }} />
+              <div className="relative w-full max-w-md aspect-square rounded-3xl overflow-hidden border border-[var(--border)] shadow-2xl shadow-primary/20 float-anim">
+                <img src="/src/assets/about_studio.jpg" alt="AP Developments Workspace" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
               </div>
             </motion.div>
           </div>

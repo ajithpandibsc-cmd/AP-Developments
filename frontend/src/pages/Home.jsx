@@ -227,14 +227,17 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Right: 3D Core */}
+            {/* Right: Hero Image */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, scale: 0.9, rotate: 2 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
               className="flex justify-center items-center"
             >
-              <APCore />
+              <div className="relative rounded-3xl overflow-hidden border border-[var(--border)] shadow-2xl shadow-primary/20 float-anim">
+                <img src="/src/assets/hero_bg.jpg" alt="AP Developments Studio" className="w-full h-auto object-cover max-w-md xl:max-w-lg rounded-3xl" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+              </div>
             </motion.div>
           </div>
         </div>

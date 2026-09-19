@@ -130,9 +130,13 @@ export default function Services() {
               Services Built<br />
               <span className="gradient-text">for Real Results</span>
             </h1>
-            <p className="text-[var(--muted)] max-w-xl mx-auto text-lg">
+            <p className="text-[var(--muted)] max-w-xl mx-auto text-lg mb-12">
               Four focused services. Zero fluff. Everything you need to build, grow, and present your brand digitally.
             </p>
+            <div className="relative w-full max-w-4xl mx-auto rounded-3xl overflow-hidden border border-[var(--border)] shadow-2xl shadow-primary/20">
+              <img src="/src/assets/services_showcase.jpg" alt="Services Overview" className="w-full h-auto object-cover max-h-[400px]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+            </div>
           </motion.div>
         </div>
       </section>
