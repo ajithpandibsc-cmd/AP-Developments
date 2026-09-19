@@ -132,6 +132,52 @@ export default function About() {
         </div>
       </section>
 
+      {/* Founder Profile */}
+      <section className="section border-t border-[var(--border)]">
+        <div className="container">
+          <div className="max-w-4xl mx-auto">
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="grid md:grid-cols-3 gap-8 items-center bg-[var(--card-bg)] rounded-3xl p-8 border border-[var(--border)]">
+              
+              <div className="col-span-1 flex flex-col items-center text-center">
+                <div className="w-40 h-40 rounded-full overflow-hidden border-4 mb-4 shadow-lg shadow-violet-500/20"
+                  style={{ borderColor: 'var(--primary)' }}>
+                  <img src="https://ui-avatars.com/api/?name=Ajithpandi+S&size=200&background=060606&color=7C3AED&rounded=true&bold=true" alt="Ajithpandi S" className="w-full h-full object-cover" />
+                </div>
+                <h3 className="font-display font-bold text-xl">Ajithpandi S</h3>
+                <p className="text-[var(--primary)] text-sm font-medium">Full-Stack Developer & Freelancer</p>
+              </div>
+
+              <div className="col-span-1 md:col-span-2 space-y-4">
+                <h2 className="font-display text-2xl font-bold mb-4">Meet the Founder</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <p className="text-xs text-[var(--muted)] uppercase tracking-wider mb-1">Qualification</p>
+                    <p className="text-sm font-medium">B.Sc. Computer Science</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-[var(--muted)] uppercase tracking-wider mb-1">Diploma</p>
+                    <p className="text-sm font-medium">Diploma in Tally</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-[var(--muted)] uppercase tracking-wider mb-1">Email</p>
+                    <a href="mailto:ajithpandi24032005@gmail.com" className="text-sm font-medium hover:text-[var(--primary)] transition-colors">ajithpandi24032005@gmail.com</a>
+                  </div>
+                  <div>
+                    <p className="text-xs text-[var(--muted)] uppercase tracking-wider mb-1">Mobile</p>
+                    <a href="tel:+916369647192" className="text-sm font-medium hover:text-[var(--primary)] transition-colors">+91 63696 47192</a>
+                  </div>
+                  <div className="sm:col-span-2">
+                    <p className="text-xs text-[var(--muted)] uppercase tracking-wider mb-1">Address</p>
+                    <p className="text-sm font-medium text-[var(--muted)]">Vellikuruchi, Vellikuruchi (P), Sivaganga – 630610, Tamil Nadu</p>
+                  </div>
+                </div>
+              </div>
+
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Process */}
       <section className="section border-t border-[var(--border)]">
         <div className="container">

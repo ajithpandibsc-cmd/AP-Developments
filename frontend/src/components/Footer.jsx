@@ -121,19 +121,19 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-sm text-[var(--muted)]">
                 <Mail size={16} className="mt-0.5 shrink-0" style={{ color: 'var(--primary)' }} />
-                <a href="mailto:hello@apdevelopments.in" className="hover:text-white transition-colors break-all">
-                  hello@apdevelopments.in
+                <a href="mailto:ajithpandi24032005@gmail.com" className="hover:text-white transition-colors break-all">
+                  ajithpandi24032005@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-3 text-sm text-[var(--muted)]">
                 <Phone size={16} className="mt-0.5 shrink-0" style={{ color: 'var(--secondary)' }} />
-                <a href="tel:+919999999999" className="hover:text-white transition-colors">
-                  +91 99999 99999
+                <a href="tel:+916369647192" className="hover:text-white transition-colors">
+                  +91 63696 47192
                 </a>
               </li>
               <li className="flex items-start gap-3 text-sm text-[var(--muted)]">
                 <MapPin size={16} className="mt-0.5 shrink-0" style={{ color: 'var(--accent)' }} />
-                <span>Tamil Nadu, India</span>
+                <span className="leading-relaxed">Vellikuruchi, Vellikuruchi (P)<br/>Sivaganga – 630610<br/>Tamil Nadu, India</span>
               </li>
             </ul>
           </div>

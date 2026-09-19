@@ -86,9 +86,22 @@ export default function Contact() {
               Start Your<br />
               <span style={{ color: 'var(--secondary)' }}>Project Today</span>
             </h1>
-            <p className="text-[var(--muted)] max-w-xl mx-auto">
+            <p className="text-[var(--muted)] max-w-xl mx-auto mb-8">
               Fill out the form below and we'll reach out within 24 hours to discuss your project.
             </p>
+
+            {/* Direct Contact Info */}
+            <div className="flex flex-wrap justify-center gap-6 text-sm">
+              <a href="mailto:ajithpandi24032005@gmail.com" className="flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--border)] bg-[var(--card-bg)] hover:border-[var(--primary)] transition-colors">
+                <span style={{ color: 'var(--primary)' }}>✉</span> ajithpandi24032005@gmail.com
+              </a>
+              <a href="tel:+916369647192" className="flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--border)] bg-[var(--card-bg)] hover:border-[var(--secondary)] transition-colors">
+                <span style={{ color: 'var(--secondary)' }}>📞</span> +91 63696 47192
+              </a>
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--border)] bg-[var(--card-bg)]">
+                <span style={{ color: 'var(--accent)' }}>📍</span> Vellikuruchi, Sivaganga, TN
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
