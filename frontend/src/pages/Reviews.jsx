@@ -19,7 +19,7 @@ export default function Reviews() {
   const visible = REVIEWS.slice(page * perPage, page * perPage + perPage)
 
   return (
-    <main className="pt-24">
+    <main className="pt-32 pb-16">
       {/* Header */}
       <section className="section pb-0 relative overflow-hidden">
         <div className="orb w-96 h-96 bg-[var(--accent)] left-1/2 top-0 opacity-10 -translate-x-1/2" />

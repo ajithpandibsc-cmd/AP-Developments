@@ -50,7 +50,7 @@ export default function Contact() {
 
   if (status === 'success') {
     return (
-      <main className="pt-24 min-h-screen flex items-center">
+      <main className="pt-32 pb-16 min-h-screen flex items-center">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -72,7 +72,7 @@ export default function Contact() {
   }
 
   return (
-    <main className="pt-24">
+    <main className="pt-32 pb-16">
       {/* Header */}
       <section className="section pb-0 relative overflow-hidden">
         <div className="orb w-96 h-96 bg-[var(--secondary)] left-0 top-0 opacity-10" />

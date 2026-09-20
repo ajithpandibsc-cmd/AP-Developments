@@ -29,7 +29,7 @@ const PROCESS = [
 
 export default function About() {
   return (
-    <main className="pt-24">
+    <main className="pt-32 pb-16">
       {/* Header */}
       <section className="section pb-0 relative overflow-hidden">
         <div className="orb w-96 h-96 bg-[var(--primary)] right-0 top-0 opacity-10" />

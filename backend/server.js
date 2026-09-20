@@ -16,6 +16,7 @@ const reviewRoutes  = require('./routes/reviewRoutes')
 const aiRoutes      = require('./routes/aiRoutes')
 const contactRoutes = require('./routes/contactRoutes')
 const adminRoutes   = require('./routes/adminRoutes')
+const portfolioRoutes = require('./routes/portfolioRoutes')
 
 const app  = express()
 const PORT = process.env.PORT || 5000
@@ -34,14 +35,15 @@ app.use(express.urlencoded({ extended: true }))
 app.use(generalLimiter)
 
 // ── Routes ──────────────────────────────────────────────
-app.use('/api/auth',     authRoutes)
-app.use('/api/projects', projectRoutes)
-app.use('/api/bookings', bookingRoutes)
-app.use('/api/payments', paymentRoutes)
-app.use('/api/reviews',  reviewRoutes)
-app.use('/api/ai',       aiRoutes)
-app.use('/api/contact',  contactRoutes)
-app.use('/api/admin',    adminRoutes)
+app.use('/api/auth',      authRoutes)
+app.use('/api/projects',  projectRoutes)
+app.use('/api/bookings',  bookingRoutes)
+app.use('/api/payments',  paymentRoutes)
+app.use('/api/reviews',   reviewRoutes)
+app.use('/api/ai',        aiRoutes)
+app.use('/api/contact',   contactRoutes)
+app.use('/api/admin',     adminRoutes)
+app.use('/api/portfolio', portfolioRoutes)
 
 // Health check
 app.get('/api/health', (_req, res) => res.json({ status: 'ok', time: new Date() }))

@@ -3,14 +3,27 @@ const crypto   = require('crypto')
 const Payment  = require('../models/Payment')
 const Booking  = require('../models/Booking')
 
-const razorpay = new Razorpay({
-  key_id:     process.env.RAZORPAY_KEY_ID,
-  key_secret: process.env.RAZORPAY_KEY_SECRET,
-})
+// Lazy-initialize Razorpay only when keys are present
+// (prevents crash on startup when keys are not yet configured)
+const getRazorpay = () => {
+  if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {
+    return null
+  }
+  return new Razorpay({
+    key_id:     process.env.RAZORPAY_KEY_ID,
+    key_secret: process.env.RAZORPAY_KEY_SECRET,
+  })
+}
+
 
 // POST /api/payments/create-order
 const createOrder = async (req, res, next) => {
   try {
+    const razorpay = getRazorpay()
+    if (!razorpay) {
+      return res.status(503).json({ message: 'Payment service not configured. Please contact support.' })
+    }
+
     const { bookingId } = req.body
     const booking = await Booking.findOne({ _id: bookingId, userId: req.user._id })
     if (!booking) return res.status(404).json({ message: 'Booking not found.' })

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight, ArrowLeft, Sparkles, CheckCircle2, AlertTriangle } from 'lucide-react'
+import { ArrowRight, ArrowLeft, Sparkles, CheckCircle2, AlertTriangle, FileText, Globe, Palette, Video, PenTool, ChevronRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import Button from '../components/Button'
 import api from '../services/api'
@@ -100,43 +100,54 @@ export default function ProjectPlanner() {
   }
 
   return (
-    <div className="min-h-screen p-6 py-12 relative overflow-hidden" style={{ background:'var(--bg)' }}>
-      <div className="orb w-96 h-96 bg-[var(--primary)] left-0 top-0 opacity-10" />
-      <div className="orb w-64 h-64 bg-[var(--secondary)] right-0 bottom-0 opacity-10" />
+    <div className="min-h-screen pt-32 relative flex flex-col items-center" style={{ background:'var(--bg)' }}>
+      <div className="orb w-[600px] h-[600px] bg-[var(--primary)] -left-32 bottom-0 opacity-20 mix-blend-screen pointer-events-none" />
+      <div className="orb w-[600px] h-[600px] bg-[var(--secondary)] -right-32 bottom-0 opacity-15 mix-blend-screen pointer-events-none" />
 
-      <div className="max-w-2xl mx-auto relative z-10">
+      <div className="w-full max-w-3xl mx-auto relative z-10 flex flex-col justify-center flex-1">
         {/* Header */}
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full text-xs font-semibold border border-[var(--border)]"
-            style={{ color:'var(--primary)', background:'rgba(124,58,237,0.1)' }}>
-            <Sparkles size={13}/> AP AI Project Planner
+        <div className="text-center mb-10 mt-4 px-6 relative z-20">
+          <div className="inline-flex items-center gap-2 mb-6 px-5 py-2 rounded-full text-xs font-semibold border border-[var(--primary)] shadow-md shadow-primary/20"
+            style={{ color:'var(--primary)', background:'#1a110a' }}>
+            <Sparkles size={14}/> Build Your Dream Project
           </div>
-          <h1 className="font-display text-4xl font-bold mb-3">Plan Your Project</h1>
-          <p className="text-[var(--muted)]">Fill in your details. Our AI will generate a scope, timeline & budget estimate.</p>
+          <h1 className="font-display text-5xl md:text-6xl font-bold mb-4 tracking-tight">
+            Plan Your <span style={{ color:'var(--primary)' }}>Project</span>
+          </h1>
+          <p className="text-[var(--muted)] text-lg md:text-xl font-medium">
+            Fill in your details. Our AI will generate a scope, timeline & budget estimate.
+          </p>
         </div>
 
-        <StepIndicator current={step} />
+        {step > 0 && <StepIndicator current={step} />}
 
-        <div className="rounded-3xl p-8 md:p-10 border border-[var(--border)]" style={{ background:'var(--card-bg)' }}>
+        <div className={`rounded-3xl p-6 md:p-10 border border-[var(--border)] mx-6 relative z-20 backdrop-blur-xl ${step === 0 ? '' : 'bg-[var(--card-bg)]'}`} 
+             style={step === 0 ? { background:'rgba(25,25,35,0.4)', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)' } : {}}>
           <AnimatePresence mode="wait">
             {/* Step 0: Service */}
             {step === 0 && (
               <motion.div key="s0" initial={{ opacity:0,x:30 }} animate={{ opacity:1,x:0 }} exit={{ opacity:0,x:-30 }}>
-                <h2 className="font-display font-bold text-xl mb-6">What service do you need?</h2>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="flex items-center gap-3 mb-6">
+                  <FileText size={24} style={{ color: 'white' }} />
+                  <h2 className="font-display font-bold text-2xl tracking-wide">What service do you need?</h2>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {SERVICES.map(s => (
                     <button key={s} onClick={() => { setForm({...form,service:s}); next() }}
-                      className={`p-5 rounded-2xl border text-sm font-medium text-left transition-all ${
+                      className={`group flex items-center justify-between p-4 px-6 rounded-full border text-sm font-medium transition-all ${
                         form.service === s
                           ? 'border-[var(--primary)] text-white'
-                          : 'border-[var(--border)] text-[var(--muted)] hover:border-[var(--primary)]/40 hover:text-white'
+                          : 'border-[var(--border)] text-[var(--muted)] hover:border-[var(--primary)] hover:text-white'
                       }`}
-                      style={form.service === s ? { background:'rgba(124,58,237,0.15)' } : {}}>
-                      {s === 'Web Development' && '🌐 '}
-                      {s === 'Content Creation' && '✍️ '}
-                      {s === 'Video Editing' && '🎬 '}
-                      {s === 'Graphic Design' && '🎨 '}
-                      {s}
+                      style={{ background: form.service === s ? 'rgba(249,115,22,0.15)' : 'rgba(0,0,0,0.3)' }}>
+                      <div className="flex items-center gap-4">
+                        {s === 'Web Development' && <Globe size={20} className="text-blue-400" />}
+                        {s === 'Content Creation' && <Palette size={20} className="text-pink-400" />}
+                        {s === 'Video Editing' && <Video size={20} className="text-purple-400" />}
+                        {s === 'Graphic Design' && <PenTool size={20} className="text-orange-400" />}
+                        <span className="text-base text-gray-200 group-hover:text-white">{s}</span>
+                      </div>
+                      <ChevronRight size={18} className="text-gray-500 group-hover:text-[var(--primary)] transition-colors" />
                     </button>
                   ))}
                 </div>
@@ -320,6 +331,40 @@ export default function ProjectPlanner() {
           </AnimatePresence>
         </div>
       </div>
+
+      {/* Desk Illustration (Only on step 0 for effect) */}
+      <AnimatePresence>
+        {step === 0 && (
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 50 }}
+            className="relative mt-8 w-full max-w-5xl mx-auto z-10 pointer-events-none"
+          >
+            <div className="relative w-full aspect-[16/9] md:aspect-[21/9]">
+              <img src="/src/assets/planner_desk.jpg" alt="Desk setup" className="absolute inset-0 w-full h-full object-cover object-top" style={{ maskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)' }} />
+            </div>
+            
+            {/* Handwritten Annotation 1 */}
+            <div className="absolute top-[20%] left-[8%] md:left-0 -rotate-6 text-gray-300 font-caveat text-xl md:text-2xl whitespace-nowrap hidden sm:block opacity-90" style={{ fontFamily: "'Caveat', cursive" }}>
+              Your Idea<br />Our Plan
+              <svg width="60" height="40" viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-1/2 left-[110%] translate-x-2">
+                <path d="M5 5 Q30 -10 50 25" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
+                <path d="M45 20 L50 25 L40 28" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+
+            {/* Handwritten Annotation 2 */}
+            <div className="absolute top-[30%] right-[8%] md:right-0 rotate-6 text-gray-300 font-caveat text-xl md:text-2xl whitespace-nowrap text-center hidden sm:block opacity-90" style={{ fontFamily: "'Caveat', cursive" }}>
+              Let's Build<br />Something Great
+              <svg width="60" height="40" viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-1/2 right-[110%] -translate-x-2 rotate-180">
+                <path d="M5 5 Q30 -10 50 25" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
+                <path d="M45 20 L50 25 L40 28" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }

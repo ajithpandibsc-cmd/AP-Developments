@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { NavLink, Link, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, ChevronRight } from 'lucide-react'
+import { Menu, X, ChevronRight, ArrowRight } from 'lucide-react'
 import Logo from './Logo'
 import { useAuth } from '../context/AuthContext'
 
@@ -40,9 +40,14 @@ export default function Navbar() {
       <header
         ref={navRef}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? 'shadow-lg shadow-black/50 py-3 border-b border-[var(--primary)]/20' : 'bg-transparent py-5'
+          scrolled ? 'py-3' : 'py-4'
         }`}
-        style={scrolled ? { background: 'rgba(10, 10, 12, 0.85)', backdropFilter: 'blur(16px)' } : {}}
+        style={{
+          background: scrolled ? 'rgba(10, 10, 12, 0.92)' : 'rgba(10, 10, 12, 0.75)',
+          backdropFilter: 'blur(18px)',
+          borderBottom: '1px solid rgba(255,255,255,0.06)',
+          boxShadow: scrolled ? '0 4px 32px rgba(0,0,0,0.4)' : 'none',
+        }}
       >
         <nav className="container flex items-center justify-between">
           {/* Brand */}
@@ -59,16 +64,23 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop links */}
-          <ul className="hidden lg:flex items-center gap-6" role="list">
+          <ul className="hidden lg:flex items-center gap-1" role="list">
             {NAV_LINKS.map(({ to, label }) => (
               <li key={to}>
                 <NavLink
                   to={to}
                   end={to === '/'}
                   className={({ isActive }) =>
-                    `nav-link px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
-                      isActive ? 'active text-white' : 'text-[var(--muted)] hover:text-white'
+                    `px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
+                      isActive
+                        ? 'text-white'
+                        : 'text-[var(--muted)] hover:text-white'
                     }`
+                  }
+                  style={({ isActive }) =>
+                    isActive
+                      ? { border: '1.5px solid #FF5E00', color: '#FF5E00' }
+                      : { border: '1.5px solid transparent' }
                   }
                 >
                   {label}
@@ -104,14 +116,14 @@ export default function Navbar() {
             )}
             <Link
               to="/project-planner"
-              className="flex items-center gap-1.5 text-sm font-semibold px-5 py-2.5 rounded-xl text-white transition-all duration-300"
+              className="flex items-center gap-1.5 text-sm font-semibold px-5 py-2.5 rounded-full text-white transition-all duration-300 hover:scale-105"
               style={{
-                background: 'linear-gradient(135deg, var(--primary), var(--secondary))',
-                boxShadow: '0 0 20px rgba(124,58,237,0.35)',
+                background: 'linear-gradient(135deg, #FF5E00, #FFB800)',
+                boxShadow: '0 0 20px rgba(255,94,0,0.35)',
               }}
               id="nav-start-project"
             >
-              Start a Project <ChevronRight size={15} />
+              Start a Project <ArrowRight size={15} />
             </Link>
           </div>
 
